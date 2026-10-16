@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Araştırma | Research Paper</title>
+
+    <meta name="description"
+          content="Ekonomi alanında akademik araştırma ve ek materyaller.">
+
+    <style>
+        :root {
+            --navy: #183153;
+            --blue: #315b80;
+            --teal: #39877f;
+            --background: #f5f7fa;
+            --text: #283442;
+            --muted: #687587;
+            --border: #e1e7ee;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.75;
+        }
+
+        a {
+            color: var(--blue);
+        }
+
+        .topbar {
+            background: var(--navy);
+            color: white;
+            padding: 14px 20px;
+        }
+
+        .topbar-inner {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .language-buttons button {
+            padding: 8px 13px;
+            border: 1px solid #8296ad;
+            border-radius: 6px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .language-buttons button.active {
+            background: white;
+            color: var(--navy);
+        }
+
+        .hero {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 58px 20px 45px;
+        }
+
+        .hero-inner {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--navy);
+            font-size: clamp(29px, 5vw, 43px);
+            line-height: 1.25;
+            margin: 14px 0 20px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 700px;
+        }
+
+        .author {
+            margin-top: 25px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .layout {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 25px;
+            align-items: start;
+        }
+
+        .sidebar {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin: 0 0 12px;
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            padding: 7px 0;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            color: var(--teal);
+        }
+
+        main {
+            min-width: 0;
+        }
+
+        .section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 20px;
+            scroll-margin-top: 20px;
+        }
+
+        .section h2 {
+            color: var(--navy);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 23px;
+            margin: 0 0 14px;
+        }
+
+        .section p {
+            margin: 0 0 12px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .note {
+            background: #edf6f5;
+            border-left: 4px solid var(--teal);
+            padding: 15px 18px;
+            border-radius: 4px;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .material-link {
+            display: inline-block;
+            margin-top: 8px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .material-link:hover {
+            background: var(--blue);
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 28px 20px;
+            font-size: 13px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 700px) {
+            .layout {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .hero {
+                padding-top: 38px;
+            }
+
+            .section {
+                padding: 21px;
+            }
+
+            .topbar-inner {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">ACADEMIC RESEARCH</div>
+
+            <div class="language-buttons" aria-label="Language selection">
+                <button type="button" id="trButton"
+                        class="active" aria-pressed="true">
+                    Türkçe
+                </button>
+
+                <button type="button" id="enButton"
+                        aria-pressed="false">
+                    English
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="turkishContent" lang="tr">
+
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="eyebrow">Akademik Araştırma</div>
+
+                <h1>Buraya Tez Başlığını Yazın</h1>
+
+                <p class="subtitle">
+                    Araştırmanın konusunu ve temel amacını bir veya iki
+                    cümleyle burada açıklayın.
+                </p>
+
+                <div class="author">
+                    <strong>Yazar:</strong> Ad Soyad<br>
+                    <strong>Kurum:</strong> Üniversite / Bölüm<br>
+                    <strong>Konferans:</strong> Konferansın Adı, 2026
+                </div>
+            </div>
+        </section>
+
+        <div class="layout">
+            <nav class="sidebar" aria-label="Sayfa içeriği">
+                <h3>İçindekiler</h3>
+                <a href="#tr-abstract">Özet</a>
+                <a href="#tr-method">Yöntem</a>
+                <a href="#tr-findings">Bulgular</a>
+                <a href="#tr-conclusion">Sonuç</a>
+                <a href="#tr-materials">Ek Materyaller</a>
+                <a href="#tr-references">Kaynakça</a>
+            </nav>
+
+            <main>
+                <section class="section" id="tr-abstract">
+                    <h2>Özet</h2>
+                    <p>
+                        Araştırmanın amacı, kapsamı, temel sorusu ve
+                        literatüre katkısı burada açıklanacaktır.
+                    </p>
+                </section>
+
+                <section class="section" id="tr-method">
+                    <h2>Araştırma Yöntemi</h2>
+                    <p>
+                        Kullanılan veri seti, analiz yöntemi, araştırma
+                        modeli ve uygulanan yöntemler burada anlatılacaktır.
+                    </p>
+                </section>
+
+                <section class="section" id="tr-findings">
+                    <h2>Bulgular</h2>
+                    <p>
+                        Araştırma sonucunda elde edilen temel bulguları,
+                        sayısal sonuçları ve önemli gözlemleri buraya ekleyin.
+                    </p>
+
+                    <div class="note">
+                        <strong>Öne çıkan bulgu:</strong>
+                        Buraya araştırmanın en önemli sonucunu yazın.
+                    </div>
+                </section>
+
+                <section class="section" id="tr-conclusion">
+                    <h2>Sonuç ve Değerlendirme</h2>
+                    <p>
+                        Bulguların ne anlama geldiğini, ekonomi açısından
+                        önemini ve varsa politika önerilerini açıklayın.
+                    </p>
+                </section>
+
+                <section class="section" id="tr-materials">
+                    <h2>Ek Materyaller</h2>
+                    <p>
+                        Araştırmada kullanılan ek tablolar, grafikler,
+                        veri açıklamaları veya paylaşılmasına izin verilen
+                        tam metin bu bölümde sunulabilir.
+                    </p>
+
+                    <p>
+                        Henüz dosya eklenmedi. Dosya bağlantıları daha sonra
+                        buraya yerleştirilecektir.
+                    </p>
+                </section>
+
+                <section class="section" id="tr-references">
+                    <h2>Kaynakça</h2>
+                    <p>
+                        Yazar, yayın yılı, eser başlığı, dergi veya yayınevi
+                        ve DOI bağlantılarını burada listeleyin.
+                    </p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="englishContent" lang="en" hidden>
+
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="eyebrow">Academic Research</div>
+
+                <h1>Enter the Research Paper Title Here</h1>
+
+                <p class="subtitle">
+                    Explain the topic and main objective of the research
+                    in one or two sentences.
+                </p>
+
+                <div class="author">
+                    <strong>Author:</strong> Full Name<br>
+                    <strong>Institution:</strong> University / Department<br>
+                    <strong>Conference:</strong> Conference Name, 2026
+                </div>
+            </div>
+        </section>
+
+        <div class="layout">
+            <nav class="sidebar" aria-label="Page contents">
+                <h3>Contents</h3>
+                <a href="#en-abstract">Abstract</a>
+                <a href="#en-method">Methodology</a>
+                <a href="#en-findings">Findings</a>
+                <a href="#en-conclusion">Conclusion</a>
+                <a href="#en-materials">Supplementary Materials</a>
+                <a href="#en-references">References</a>
+            </nav>
+
+            <main>
+                <section class="section" id="en-abstract">
+                    <h2>Abstract</h2>
+                    <p>
+                        Describe the research objective, scope, main research
+                        question, and contribution to the literature.
+                    </p>
+                </section>
+
+                <section class="section" id="en-method">
+                    <h2>Research Methodology</h2>
+                    <p>
+                        Explain the dataset, analytical approach, research
+                        model, and methods used in the study.
+                    </p>
+                </section>
+
+                <section class="section" id="en-findings">
+                    <h2>Findings</h2>
+                    <p>
+                        Present the main findings, numerical results,
+                        and important observations from the research.
+                    </p>
+
+                    <div class="note">
+                        <strong>Key finding:</strong>
+                        Enter the most important result of the research.
+                    </div>
+                </section>
+
+                <section class="section" id="en-conclusion">
+                    <h2>Conclusion and Discussion</h2>
+                    <p>
+                        Explain the implications of the findings,
+                        their relevance to economics, and any policy
+                        recommendations.
+                    </p>
+                </section>
+
+                <section class="section" id="en-materials">
+                    <h2>Supplementary Materials</h2>
+                    <p>
+                        Additional tables, figures, data descriptions,
+                        and the full text, if approved for sharing,
+                        can be provided here.
+                    </p>
+
+                    <p>
+                        No files have been added yet. File links will
+                        be placed here later.
+                    </p>
+                </section>
+
+                <section class="section" id="en-references">
+                    <h2>References</h2>
+                    <p>
+                        List authors, publication years, titles, journals
+                        or publishers, and DOI links here.
+                    </p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <footer class="footer">
+        Academic Research · Conference Materials
+    </footer>
+
+    <script>
+        const trButton = document.getElementById("trButton");
+        const enButton = document.getElementById("enButton");
+
+        const turkishContent =
+            document.getElementById("turkishContent");
+
+        const englishContent =
+            document.getElementById("englishContent");
+
+        function setLanguage(language) {
+            const isTurkish = language === "tr";
+
+            turkishContent.hidden = !isTurkish;
+            englishContent.hidden = isTurkish;
+
+            trButton.classList.toggle("active", isTurkish);
+            enButton.classList.toggle("active", !isTurkish);
+
+            trButton.setAttribute("aria-pressed", String(isTurkish));
+            enButton.setAttribute("aria-pressed", String(!isTurkish));
+
+            document.documentElement.lang = language;
+
+            document.title = isTurkish
+                ? "Araştırma | Akademik Çalışma"
+                : "Research | Academic Paper";
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        trButton.addEventListener("click", () => setLanguage("tr"));
+        enButton.addEventListener("click", () => setLanguage("en"));
+    </script>
+
+</body>
+</html>
